@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>محمد حسین برجی | طراح و برنامه‌نویس وب</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: #0a9396;
+      color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      padding: 40px 30px;
+      box-shadow: 0 0 30px rgba(10, 147, 150, 0.3);
+    }
+
+    h2 {
+      color: #0dcaf0;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 8px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    a {
+      color: #0dcaf0;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background-color: #2a2a2a;
+      color: #eee;
+      font-size: 1rem;
+    }
+
+    form input::placeholder, form textarea::placeholder {
+      color: #999;
+    }
+
+    form button {
+      margin-top: 20px;
+      background-color: #0a9396;
+      color: #fff;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    form button:hover {
+      background-color: #007f7f;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 2rem;
+        padding: 30px 15px;
+      }
+
+      main {
+        padding: 25px 20px;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    طراحی سایت برجی
+  </header>
+
+  <main>
+    <section>
+      <h2>درباره من</h2>
+      <p>
+        بنده <strong>محمد حسین برجی</strong>، برنامه‌نویس و طراح سایت هستم. دوره‌دیده زیر نظر استاد <strong>مجید تجن جاری</strong> و شرکت <strong>ایولرن</strong>.  
+        آماده‌ی قبول پروژه‌های طراحی و توسعه وب با کیفیت بالا و پشتیبانی حرفه‌ای هستم.
+      </p>
+    </section>
+
+    <section>
+      <h2>تماس با من</h2>
+      <p>شماره تماس: <a href="tel:+989916276686">+98 991 627 6686</a></p>
+
+      <form id="contactForm">
+        <label for="name">نام شما:</label>
+        <input type="text" id="name" name="user_name" placeholder="نام کامل شما" required>
+
+        <label for="email">ایمیل شما:</label>
+        <input type="email" id="email" name="user_email" placeholder="ایمیل معتبر شما" required>
+
+        <label for="message">پیام شما:</label>
+        <textarea id="message" name="message" rows="5" placeholder="متن پیام شما..." required></textarea>
+
+        <button type="submit">ارسال پیام</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 طراحی سایت برجی | کلیه حقوق محفوظ است.
+  </footer>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("mohammadkalio");
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_3b7wyy8', 'template_xu1ssqd', this)
+        .then(function() {
+          alert('✅ پیام شما با موفقیت ارسال شد!');
+          document.getElementById('contactForm').reset();
+        }, function(error) {
+          alert('❌ خطا در ارسال پیام. لطفاً دوباره تلاش کنید.');
+          console.error('EmailJS error:', error);
+        });
+    });
+  </script>
+</body>
+</html>
